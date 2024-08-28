@@ -123,7 +123,7 @@
           <div class="col-md-4 mb-3">
             <div class="card">
               <img
-                src="img/projects/1.jpg"
+                src="img/project/1.jpg"
                 class="card-img-top"
                 alt="Project 1"
               />
@@ -138,7 +138,7 @@
           <div class="col-md-4 mb-3">
             <div class="card">
               <img
-                src="img/projects/2.jpg"
+                src="img/project/2.jpg"
                 class="card-img-top"
                 alt="Project 2"
               />
@@ -153,7 +153,7 @@
           <div class="col-md-4 mb-3">
             <div class="card">
               <img
-                src="img/projects/3.jpg"
+                src="img/project/3.jpg"
                 class="card-img-top"
                 alt="Project 3"
               />
@@ -168,7 +168,7 @@
           <div class="col-md-4 mb-3">
             <div class="card">
               <img
-                src="img/projects/4.jpg"
+                src="img/project/4.jpg"
                 class="card-img-top"
                 alt="Project 4"
               />
@@ -183,7 +183,7 @@
           <div class="col-md-4 mb-3">
             <div class="card">
               <img
-                src="img/projects/5.jpg"
+                src="img/project/5.jpg"
                 class="card-img-top"
                 alt="Project 5"
               />
@@ -217,18 +217,18 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <form>
+            <form name="reisyaokan-contact-form">
               <div class="mb-3">
                 <label for="name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name">
+                <input type="text" class="form-control" id="name" aria-describedby="name" name="nama">
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emai">
+                <input type="email" class="form-control" id="email" aria-describedby="emai" name="email">
               </div>
               <div class="mb-3">
                 <label for="pesan" class="form-label">Pesan</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="pesan"></textarea>
               </div>
               <button type="submit" class="btn btn-primary">Kirim</button>
             </form>
@@ -252,5 +252,17 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzzVEWlFODokn2dKiwATBXBC7Q15yOVZxAkqwwUhPdJabbCumKfErCnqd1i-jyQvwkjgQ/exec'
+      const form = document.forms['reisyaokan-contact-form']
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => console.log('Success!', response))
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
   </body>
 </html>
